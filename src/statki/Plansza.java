@@ -34,6 +34,12 @@ public class Plansza {
                       this.liczbaStatkow = liczba4_masztowców+liczba3_masztowców+liczba2_masztowców+liczba1_masztowców;
 
                       this.Pole = new Kratka[rozmiar][rozmiar];
+                      
+                      for(int i=0;i<rozmiar;i++){
+                          for(int j=0;j<rozmiar;j++){
+                            Pole[i][j]=new Kratka(false);  
+                          }
+                      }
                       this.Okret = new Statek[liczbaStatkow];
                       
                          
@@ -49,26 +55,26 @@ public class Plansza {
                          Random r = new Random();
                          for(int i= 0;i<liczba1_masztowców;i++)
                          {
-                          Okret[pobierany_statek].Parametry_Statku(1, r.nextBoolean());
+                          Okret[pobierany_statek] = new Statek(1, r.nextBoolean());
                           pobierany_statek++;
                          }
                       
                           for(int i= 0;i<liczba2_masztowców;i++)
                          {
-                          Okret[pobierany_statek].Parametry_Statku(2, r.nextBoolean());
+                          Okret[pobierany_statek]= new Statek(2, r.nextBoolean());
                           pobierany_statek++;
                          }
                        
                          for(int i= 0;i<liczba3_masztowców;i++)
                          {
-                          Okret[pobierany_statek].Parametry_Statku(3, r.nextBoolean());
+                          Okret[pobierany_statek]= new Statek(3, r.nextBoolean());
                           pobierany_statek++;
                          }
                         
                         
                          for(int i= 0;i<liczba4_masztowców;i++)
                          {
-                          Okret[pobierany_statek].Parametry_Statku(4, r.nextBoolean());
+                          Okret[pobierany_statek]= new Statek(4, r.nextBoolean());
                           pobierany_statek++;
                          }
                

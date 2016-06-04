@@ -9,7 +9,13 @@ package statki;
  ta klasa zawiera w sobie dane dotyczące obiektu kratki która jest  zajęta przez statek bądź nie
  */
 public class Kratka {
-    boolean pusta = false;
+    boolean pusta;
+    
+    
+    public Kratka(boolean w){
+        this.pusta=w;
+    }
+    
     
     public void setKratka(boolean w)
     {
