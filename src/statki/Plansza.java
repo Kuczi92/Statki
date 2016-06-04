@@ -10,5 +10,12 @@ package statki;
  * @author Norbert
  */
 public class Plansza {
-    
+  Kratka[][] Pole;
+  Statek[] Okret;
+  
+  
+  public Plansza(int rozmiar, int liczba_statkow){
+    this.Pole = new Kratka[rozmiar][rozmiar];
+    this.Okret = new Statek[liczba_statkow];
+  }  
 }
