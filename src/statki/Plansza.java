@@ -23,6 +23,31 @@ public class Plansza {
   int rozmiar;
   
   
+  
+  public Plansza(int rozmiar){
+   this.Pole = new Kratka[rozmiar][rozmiar];
+                      
+                      for(int i=0;i<rozmiar;i++){
+                          for(int j=0;j<rozmiar;j++){
+                            Pole[i][j]=new Kratka(false);  
+                          }
+                      }   
+  }
+  
+  
+  
+  public void Dokonaj_strzalu(int x,int y)
+  {
+      if(Pole[x][y].getKratka())
+      {
+          System.out.println("Brawo trafiłeś");
+          Pole[x][y].setKratka(false);
+      }
+      else
+      {
+          System.out.println("Pudło");
+      }
+  }
   public Plansza(int rozmiar,int liczba4_masztowców,int liczba3_masztowców,int liczba2_masztowców,int liczba1_masztowców )
             {
                       this.rozmiar=rozmiar;
@@ -225,16 +250,27 @@ public class Plansza {
   
   
   public void WyswietlPlansze(){
-      
+     System.out.print("  ");
       for(int i=0;i<rozmiar;i++){
-          for(int j=0;j<rozmiar;j++){
+          System.out.print(i+1);
+      }
+      System.out.println();
+      for(int i=0;i<rozmiar;i++){
+          System.out.print(i+1+" ");
+          for(int j=0;j<rozmiar;j++)
+          {
              if(Pole[i][j].getKratka()) 
-              System.out.print("X");
+                 System.out.print("X");
              else
                  System.out.print(" ");
           }
-          System.out.println(" ");
+          System.out.println("|");
       }
-     
+       System.out.print("  ");
+      for(int i = 0 ;i<rozmiar;i++){
+          System.out.print("-");
+          
+      }
+     System.out.println();
   }
 }

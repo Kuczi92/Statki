@@ -15,10 +15,11 @@ public class Statki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Plansza PL;
-       PL= new Plansza(10,1,2,3,4);
-       PL.Generuj_ustawienia_statków_na_planszy_losowo();
-       PL.WyswietlPlansze();
+       Plansza Gracza_Komputera;
+       Gracza_Komputera= new Plansza(10,1,2,3,4);
+       Gracza_Komputera.Generuj_ustawienia_statków_na_planszy_losowo();
+       Gracza_Komputera.WyswietlPlansze();
+       System.out.println("Wygenerowano Plansze dla Komputera");
     }
     
 }
