@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package statki;
-
+import java.util.Scanner;
 import java.util.Random;
 
 /**
@@ -72,7 +72,197 @@ public class Plansza {
                          
 
             } 
-  
+  @SuppressWarnings("UnusedAssignment")
+  public void Ustaw_statki()
+  {
+      Scanner scan = new Scanner(System.in);
+      for(int i=0;i<liczbaStatkow;i++)
+      {
+          
+         System.out.println("Podaj liczbę jednomasztowców");
+         this.liczba1_masztowców=scan.nextInt();
+         System.out.println("Podaj liczbę dwumasztowców");
+         this.liczba2_masztowców=scan.nextInt();
+         System.out.println("Podaj liczbę trójmasztowców");
+         this.liczba3_masztowców=scan.nextInt();
+         System.out.println("Podaj liczbę Czteromasztowców");
+         this.liczba4_masztowców=scan.nextInt();
+      }
+      int pobierany_statek=0;
+      int x,y;
+      System.out.println("Wpisz położenie Jednomasztowców ");
+      
+      for(int i= 0;i<liczba1_masztowców;i++)
+                         {
+                             
+                            System.out.println("Wpisz x");
+                            x=scan.nextInt();
+                            System.out.println("Wpisz y");
+                            y=scan.nextInt();
+                            System.out.println("Wybierz pion(wciśnij 1) albo poziom(wciśnij 2)");
+                            if(scan.nextInt()==1)
+                                Okret[pobierany_statek] = new Statek(1, false);
+                            if(scan.nextInt()==2)
+                                Okret[pobierany_statek] = new Statek(1, true);   
+                            
+                            pobierany_statek++;
+                            boolean nieumieszczonyStatek=true;
+                            while(nieumieszczonyStatek)
+                             {
+                                  
+                                            if(!Pole[x][y].getKratka())
+                                                    {    
+                                                        Pole[x][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                              }
+                         }
+      
+      
+      
+      
+      System.out.println("Wpisz położenie Dwumasztowców ");
+      for(int i= 0;i<liczba2_masztowców;i++)
+                         {
+                             
+                            System.out.println("Wpisz x");
+                            x=scan.nextInt();
+                            System.out.println("Wpisz y");
+                            y=scan.nextInt();
+                            System.out.println("Wybierz pion(wciśnij 1) albo poziom(wciśnij 2)");
+                            if(scan.nextInt()==1)
+                                Okret[pobierany_statek] = new Statek(2, false);
+                            if(scan.nextInt()==2)
+                                Okret[pobierany_statek] = new Statek(2, true);   
+                            
+                            pobierany_statek++;
+                            boolean nieumieszczonyStatek=true;
+                            while(nieumieszczonyStatek)
+                             {
+                                  
+                                            if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                              }
+                         }
+      
+      
+      System.out.println("Wpisz położenie Trójmasztowców ");
+      for(int i= 0;i<liczba2_masztowców;i++)
+                         {
+                             
+                            System.out.println("Wpisz x");
+                            x=scan.nextInt();
+                            System.out.println("Wpisz y");
+                            y=scan.nextInt();
+                            System.out.println("Wybierz pion(wciśnij 1) albo poziom(wciśnij 2)");
+                            if(scan.nextInt()==1)
+                                Okret[pobierany_statek] = new Statek(3, false);
+                            if(scan.nextInt()==2)
+                                Okret[pobierany_statek] = new Statek(3, true);   
+                            
+                            pobierany_statek++;
+                            boolean nieumieszczonyStatek=true;
+                            while(nieumieszczonyStatek)
+                             {
+                                  
+                                            if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka()))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x+2][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y+2].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                              }
+                         }
+      
+      
+      System.out.println("Wpisz położenie Czteromasztowców ");
+      for(int i= 0;i<liczba2_masztowców;i++)
+                         {
+                             
+                            System.out.println("Wpisz x");
+                            x=scan.nextInt();
+                            System.out.println("Wpisz y");
+                            y=scan.nextInt();
+                            System.out.println("Wybierz pion(wciśnij 1) albo poziom(wciśnij 2)");
+                            if(scan.nextInt()==1)
+                                Okret[pobierany_statek] = new Statek(4, false);
+                            if(scan.nextInt()==2)
+                                Okret[pobierany_statek] = new Statek(4, true);   
+                            
+                            pobierany_statek++;
+                            boolean nieumieszczonyStatek=true;
+                            while(nieumieszczonyStatek)
+                             {
+                                  
+                                            if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() || Pole[x+3][y].getKratka()))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x+2][y].setKratka(true);
+                                                        Pole[x+3][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() || Pole[x][y+3].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y+2].setKratka(true);
+                                                        Pole[x][y+3].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                              }
+                         }
+      
+      
+      
+      
+      
+      
+      
+      
+  }
   public void Generuj_ustawienia_statków_na_planszy_losowo()
             {
                 
