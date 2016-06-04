@@ -23,12 +23,14 @@ public class Plansza {
   int rozmiar;
   
   
-  
+  // przeciążony konstruktor dla Plnaszy gdzie gracz dokonuje strzał a te strzały są zaznaczane
   public Plansza(int rozmiar){
    this.Pole = new Kratka[rozmiar][rozmiar];
                       
-                      for(int i=0;i<rozmiar;i++){
-                          for(int j=0;j<rozmiar;j++){
+                      for(int i=0;i<rozmiar;i++)
+                      {
+                          for(int j=0;j<rozmiar;j++)
+                          {
                             Pole[i][j]=new Kratka(false);  
                           }
                       }   
