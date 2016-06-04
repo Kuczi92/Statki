@@ -6,9 +6,19 @@
 package statki;
 
 /**
- *
- * @author Norbert
+ Wiadomo tu opisujemy statek jego właściowści itp
  */
 public class Statek {
+    int rozmiar;
+    String ulozenie;
+    public Statek (int rozmiar, boolean poziomo)
+            
+    {
+    this.rozmiar=rozmiar;
+    if(poziomo==true)
+    this.ulozenie="Poziomo";
+    else
+        this.ulozenie="Pionowo";
+    }
     
 }
