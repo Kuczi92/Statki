@@ -11,14 +11,25 @@ package statki;
 public class Statek {
     int rozmiar;
     String ulozenie;
-    public Statek (int rozmiar, boolean poziomo)
+    public void Parametry_Statku (int rozmiar, boolean poziomo)
             
     {
     this.rozmiar=rozmiar;
     if(poziomo==true)
-    this.ulozenie="Poziomo";
+        this.ulozenie="Poziomo";
     else
         this.ulozenie="Pionowo";
     }
     
+    
+    
+    public int pobierzRozmiar()
+    {
+        return this.rozmiar;
+    }
+    
+    public String pobierzUlozenie()
+    {
+        return this.ulozenie;
+    }
 }

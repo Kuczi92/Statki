@@ -16,7 +16,7 @@ public class Kratka {
         this.pusta=w;
     }
     
-    public boolean getKratka(boolean w)
+    public boolean getKratka()
     {
         return this.pusta;
     }
