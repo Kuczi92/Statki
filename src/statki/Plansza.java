@@ -33,6 +33,34 @@ public class Plansza {
 
                       this.Pole = new Kratka[rozmiar][rozmiar];
                       this.Okret = new Statek[liczbaStatkow];
+                      
+                      int pobierany_statek=0;
+                      
+                      Random r = new Random();
+                         for(int i= 0;i<liczba1_masztowców;i++)
+                         {
+                          Okret[pobierany_statek].Parametry_Statku(1, r.nextBoolean());
+                          pobierany_statek++;
+                         }
+                      
+                          for(int i= 0;i<liczba2_masztowców;i++)
+                         {
+                          Okret[pobierany_statek].Parametry_Statku(2, r.nextBoolean());
+                          pobierany_statek++;
+                         }
+                       
+                         for(int i= 0;i<liczba3_masztowców;i++)
+                         {
+                          Okret[pobierany_statek].Parametry_Statku(3, r.nextBoolean());
+                          pobierany_statek++;
+                         }
+                        
+                        
+                         for(int i= 0;i<liczba4_masztowców;i++)
+                         {
+                          Okret[pobierany_statek].Parametry_Statku(4, r.nextBoolean());
+                          pobierany_statek++;
+                         }
 
             } 
   
@@ -41,31 +69,73 @@ public class Plansza {
                 
                  Random r = new Random();
                 
+                 
+                 
+                 
+                 
                 // komputer losowo dodaje 1 masztowce 
-                for(int i = 0; i<liczba1_masztowców;i++ )
+                for(int i = 0; i<liczbaStatkow;i++ )
                 { 
-                  Pole[r.nextInt(rozmiar)][r.nextInt(rozmiar)].setKratka(true);
+                    
+                    
+                  switch (Okret[i].pobierzRozmiar())
+                  {
+                      case 1:
+                        int x,y;
+                        boolean nieumieszczonyStatek=true;
+                        while(nieumieszczonyStatek)
+                        {
+                                    x=r.nextInt(rozmiar);
+                                    y=r.nextInt(rozmiar);
+                                            if(!Pole[x][y].getKratka())
+                                                    {    
+                                                        Pole[x][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                        }
+                       break;
+                       
+                       case 2:
+                        
+                        nieumieszczonyStatek=true;
+                        
+                        while(nieumieszczonyStatek)
+                        {
+                                  
+                                       
+                                    x=r.nextInt(rozmiar-1);
+                                    y=r.nextInt(rozmiar-1);
+                                    if("Poziomo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() && Pole[x+1][y].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!Pole[x][y+1].getKratka())
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                        }
+                       break;
+                      
+                      
+                  
+                  
+                  }
+                  
                  
                 }
-                
-                // komputer losowo dodaje 2 masztowce
-                for(int i = 0; i<liczba2_masztowców;i++ )
-                {  
-                   r.nextInt(rozmiar);
-                   
-                }
-                
-                // komputer losowo dodaje 3 masztowce
-                for(int i = 0; i<liczba3_masztowców;i++ )
-                {  
-                    r.nextInt(rozmiar);
-                }
-                
-                // komputer losowo dodaje 4 masztowce
-                for(int i = 0; i<liczba4_masztowców;i++ )
-                { 
-                      r.nextInt(rozmiar);
-                }
-                
             }
 }
