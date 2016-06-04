@@ -15,7 +15,10 @@ public class Statki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       Plansza PL;
+       PL= new Plansza(10,1,2,3,4);
+       PL.Generuj_ustawienia_statków_na_planszy_losowo();
+       PL.WyswietlPlansze();
     }
     
 }

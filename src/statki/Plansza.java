@@ -21,6 +21,8 @@ public class Plansza {
   int liczba1_masztowców;
   int liczbaStatkow;
   int rozmiar;
+  
+  
   public Plansza(int rozmiar,int liczba4_masztowców,int liczba3_masztowców,int liczba2_masztowców,int liczba1_masztowców )
             {
                       this.rozmiar=rozmiar;
@@ -34,9 +36,17 @@ public class Plansza {
                       this.Pole = new Kratka[rozmiar][rozmiar];
                       this.Okret = new Statek[liczbaStatkow];
                       
-                      int pobierany_statek=0;
-                      
-                      Random r = new Random();
+                         
+
+            } 
+  
+  public void Generuj_ustawienia_statków_na_planszy_losowo()
+            {
+                
+                
+                        //Fragment kodu opdowiedzialny za inicjacje statkow oraz losowe ustanienie pionu poziomu
+                         int pobierany_statek=0;
+                         Random r = new Random();
                          for(int i= 0;i<liczba1_masztowców;i++)
                          {
                           Okret[pobierany_statek].Parametry_Statku(1, r.nextBoolean());
@@ -61,25 +71,17 @@ public class Plansza {
                           Okret[pobierany_statek].Parametry_Statku(4, r.nextBoolean());
                           pobierany_statek++;
                          }
-
-            } 
-  
-  public void Generuj_ustawienia_statków_na_planszy_losowo()
-            {
-                
-                 Random r = new Random();
-                
-                 
-                 
-                 
-                 
-                // komputer losowo dodaje 1 masztowce 
+               
+                         
+                   //częśc kodu odpowiedzialna za dodanie losowe statkow na planszy      
                 for(int i = 0; i<liczbaStatkow;i++ )
                 { 
                     
                     
                   switch (Okret[i].pobierzRozmiar())
-                  {
+                  {   
+                      
+                      // komputer losowo dodaje 1 masztowce na plansze  pobiera rozmiar i na podstawie ulozenia dodaje na planszy
                       case 1:
                         int x,y;
                         boolean nieumieszczonyStatek=true;
@@ -95,18 +97,18 @@ public class Plansza {
                         }
                        break;
                        
+                       
+                        // komputer losowo dodaje 2 masztowce na plansze  pobiera rozmiar i na podstawie ulozenia dodaje na planszy
                        case 2:
-                        
-                        nieumieszczonyStatek=true;
-                        
-                        while(nieumieszczonyStatek)
+                       nieumieszczonyStatek=true;
+                       while(nieumieszczonyStatek)
                         {
                                   
                                        
                                     x=r.nextInt(rozmiar-1);
                                     y=r.nextInt(rozmiar-1);
                                     if("Poziomo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() && Pole[x+1][y].getKratka() ))
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() ))
                                                     {   
                                                         
                                                         Pole[x][y].setKratka(true);
@@ -117,11 +119,87 @@ public class Plansza {
                                     
                                     
                                     else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!Pole[x][y+1].getKratka())
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() ))
                                                     {   
                                                         
                                                         Pole[x][y].setKratka(true);
                                                         Pole[x][y+1].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                        }
+                       break;
+                       
+                       // komputer losowo dodaje 3 masztowce na plansze  pobiera rozmiar i na podstawie ulozenia dodaje na planszy
+                       case 3:
+                        
+                       nieumieszczonyStatek=true;
+                       while(nieumieszczonyStatek)
+                        {
+                                  
+                                       
+                                    x=r.nextInt(rozmiar-2);
+                                    y=r.nextInt(rozmiar-2);
+                                    if("Poziomo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x+2][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y+2].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                        }
+                       break;
+                       
+                       
+                       // komputer losowo dodaje 4 masztowce na plansze  pobiera rozmiar i na podstawie ulozenia dodaje na planszy
+                       case 4:
+                       nieumieszczonyStatek=true;
+                       while(nieumieszczonyStatek)
+                        {
+                                  
+                                       
+                                    x=r.nextInt(rozmiar-3);
+                                    y=r.nextInt(rozmiar-3);
+                                    if("Poziomo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() || Pole[x+3][y].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x+2][y].setKratka(true);
+                                                        Pole[x+3][y].setKratka(true);
+                                                        nieumieszczonyStatek=false;
+                                                    }
+                                            }
+                                    
+                                    
+                                    else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
+                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                                    {   
+                                                        
+                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y+2].setKratka(true);
+                                                        Pole[x][y+3].setKratka(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -138,4 +216,19 @@ public class Plansza {
                  
                 }
             }
+  
+  
+  public void WyswietlPlansze(){
+      
+      for(int i=0;i<rozmiar;i++){
+          for(int j=0;j<rozmiar;j++){
+             if(Pole[i][j].getKratka()) 
+              System.out.print("X");
+             else
+                 System.out.print(" ");
+          }
+          System.out.println(" ");
+      }
+     
+  }
 }
