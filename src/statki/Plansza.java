@@ -5,6 +5,10 @@
  */
 package statki;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -457,27 +461,32 @@ public class Plansza
     // BEGIN MGawron
     public boolean SprawdzMasztowiec(int x, int y, int roz, String uklad)
     {
+        /**
+         * Trzeba dorobić przerywanie nieskończoenj petli jak brakuje miejsca
+         * Jesli funckja jest wywolana 100 razy to zacznij od nowa losowanie czy
+         * cos podobnego
+         */
         //System.out.println(x + " " + y + " " + roz + " " + uklad);
         int mozna = 1;
         if ("Pionowo".equals(uklad))
         {
-            for (int i = y - 1; i < y + roz + 2; i++)
+            for (int i = x - 1; i < x + 2; i++)
             {
                 if (i < 0)
                 {
                     continue;
                 }
-                if (i > 9)
+                if (i > this.rozmiar - 1)
                 {
                     continue;
                 }
-                for (int j = x - 1; j < x + 2; j++)
+                for (int j = y - 1; j < y + roz + 2; j++)
                 {
                     if (j < 0)
                     {
                         continue;
                     }
-                    if (j > 9)
+                    if (j > this.rozmiar - 1)
                     {
                         continue;
                     }
@@ -494,23 +503,23 @@ public class Plansza
         }
         else
         {
-            for (int i = y - 1; i < y + 2; i++)
+            for (int i = x - 1; i < x + roz + 2; i++)
             {
                 if (i < 0)
                 {
                     continue;
                 }
-                if (i > 9)
+                if (i > this.rozmiar - 1)
                 {
                     continue;
                 }
-                for (int j = x - 1; j < x + roz + 2; j++)
+                for (int j = y - 1; j < y + 2; j++)
                 {
                     if (j < 0)
                     {
                         continue;
                     }
-                    if (j > 9)
+                    if (j > this.rozmiar - 1)
                     {
                         continue;
                     }
@@ -562,4 +571,105 @@ public class Plansza
         }
         System.out.println();
     }
+
+    // BEGIN MGawron
+    public boolean WczytajPlanszeZPliku(String nazwa)
+    {
+        File file = new File("./plansze/" + nazwa);
+        RandomAccessFile input = null;
+        String wiersz = null;
+        int liczba = 0;
+
+        try
+        {
+            input = new RandomAccessFile(file, "r");
+
+            if (this.DekodujLiczbeStatkow(input.readLine()))
+            {
+                String[] wiersze = new String[this.liczbaStatkow];
+                while ((wiersz = input.readLine()) != null && liczba < this.liczbaStatkow)
+                {
+                    if (wiersz.equals(""))
+                    {
+                        continue;
+                    }
+                    wiersze[liczba] = wiersz;
+                    //System.out.println(wiersz);
+                    liczba++;
+                }
+
+                //System.out.println("odczytane linie z pliku" + liczba);
+                if (liczba >= this.liczbaStatkow)
+                {
+                    /**
+                     * TO DO Dekoduj linijki z pliku i zrob z nich plansze
+                     */
+                    return this.DekodujStatki(wiersze);
+                    //return true;
+                }
+                else
+                {
+                    System.out.println("Za malo linii w pliku");
+                    return false;
+                }
+            }
+            else
+            {
+                System.out.println("Nie udalo sie odczytac liczby statkow");
+                return false;
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Wystapil blad podczas otwierania pliku");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Wystapil blad podczas odczytu z pliku");
+        }
+        finally
+        {
+            if (input != null)
+            {
+                try
+                {
+                    input.close();
+                }
+                catch (IOException e)
+                {
+                    System.out.println("Wystapil blad podczas zamykania pliku");
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean DekodujStatki(String[] wiersze)
+    {
+        for (int i = 0; i < wiersze.length; i++)
+        {
+            //System.out.println(wiersze[i]);
+        }
+        return true;
+    }
+
+    public boolean DekodujLiczbeStatkow(String wiersz)
+    {
+        String[] wiersze = wiersz.split(" ");
+        if (wiersze.length >= 4)
+        {
+            int suma = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                suma = suma + Integer.parseInt(wiersze[i]);
+            }
+            this.liczbaStatkow = suma;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    // END
 }

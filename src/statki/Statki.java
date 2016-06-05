@@ -19,10 +19,10 @@ public class Statki
     public static int[][] tab =
     {
         {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0}
+        {0, 1, 1, 1, 1},
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0}
     };
 
     public static boolean Sprawdz(int x, int y, int roz, String uklad)
@@ -109,8 +109,8 @@ public class Statki
     public static void main(String[] args)
     {
         // BEGIN MGawron
-        /*System.out.println(Sprawdz(0, 0, 2, "Pionowo"));
-        System.out.println(Sprawdz(0, 2, 2, "Pionowo"));
+        //System.out.println(Sprawdz(0, 0, 2, "Pionowo"));
+        /*System.out.println(Sprawdz(0, 2, 2, "Pionowo"));
         System.out.println(Sprawdz(3, 3, 2, "Pionowo"));
         System.out.println(Sprawdz(4, 3, 2, "Pionowo"));
         System.out.println(Sprawdz(0, 0, 2, "Poziomo"));
@@ -123,6 +123,7 @@ public class Statki
         Gracza_Komputera.Generuj_ustawienia_statków_na_planszy_losowo();
         Gracza_Komputera.WyswietlPlansze();
         System.out.println("Wygenerowano Plansze dla Komputera");
+        Gracza_Komputera.WczytajPlanszeZPliku("testowa.txt");
     }
 
 }
