@@ -6,7 +6,7 @@
 package statki;
 
 /**
- Wiadomo tu opisujemy statek jego właściowści itp
+ * Wiadomo tu opisujemy statek jego właściowści itp
  */
 public class Statek
 {
@@ -14,52 +14,56 @@ public class Statek
     private boolean zatopiony;
     private int trafiony;
     private String ulozenie;
-    
-    public  Statek (int rozmiar, boolean poziomo)      
+
+    public Statek(int rozmiar, boolean poziomo)
     {
         this.rozmiar = rozmiar;
         this.zatopiony = false;
         this.trafiony = 0;
-        
-        if(poziomo == true)
+
+        if (poziomo == true)
+        {
             this.ulozenie = "Poziomo";
+        }
         else
+        {
             this.ulozenie = "Pionowo";
+        }
     }
 
     public int pobierzRozmiar()
     {
         return this.rozmiar;
     }
-    
+
     public String pobierzUlozenie()
     {
         return this.ulozenie;
     }
-    
+
     public void SetZatopiony(boolean value)
     {
         this.zatopiony = value;
     }
-    
+
     public boolean GetZatopiony()
     {
         return this.zatopiony;
     }
-    
+
     public void SetTrafiony()
     {
         this.trafiony++;
     }
-    
+
     public int GetTrafiony()
     {
         return this.trafiony;
     }
-    
+
     public boolean SprawdzCzyZatopiony()
     {
-        if(this.rozmiar == this.trafiony)
+        if (this.rozmiar == this.trafiony)
         {
             this.SetZatopiony(true);
             return true;
