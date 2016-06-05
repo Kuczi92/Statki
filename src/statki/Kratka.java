@@ -8,22 +8,35 @@ package statki;
 /**
  ta klasa zawiera w sobie dane dotyczące obiektu kratki która jest  zajęta przez statek bądź nie
  */
-public class Kratka {
-    boolean pusta;
+public class Kratka
+{
+    private boolean statek;
+    private boolean odwiedzona;
     
-    
-    public Kratka(boolean w){
-        this.pusta=w;
+    public Kratka(boolean w)
+    {
+        this.statek = w;
+        this.odwiedzona = false;
     }
     
     
     public void setKratka(boolean w)
     {
-        this.pusta=w;
+        this.statek = w;
     }
     
     public boolean getKratka()
     {
-        return this.pusta;
+        return this.statek;
+    }
+    
+    public void setOdwiedzona(boolean w)
+    {
+        this.odwiedzona = true;
+    }
+    
+    public boolean getOdwiedzona()
+    {
+        return this.odwiedzona;
     }
 }
