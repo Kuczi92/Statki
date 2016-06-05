@@ -12,12 +12,14 @@ public class Statek
 {
     private int rozmiar;
     private boolean zatopiony;
+    private int trafiony;
     private String ulozenie;
     
     public  Statek (int rozmiar, boolean poziomo)      
     {
         this.rozmiar = rozmiar;
         this.zatopiony = false;
+        this.trafiony = 0;
         
         if(poziomo == true)
             this.ulozenie = "Poziomo";
@@ -35,13 +37,23 @@ public class Statek
         return this.ulozenie;
     }
     
-    public void SetZatopiony(boolean w)
+    public void SetZatopiony(boolean value)
     {
-        this.zatopiony = true;
+        this.zatopiony = value;
     }
     
     public boolean GetZatopiony()
     {
         return this.zatopiony;
+    }
+    
+    public void SetTrafiony()
+    {
+        this.trafiony++;
+    }
+    
+    public int GetTrafiony()
+    {
+        return this.trafiony;
     }
 }

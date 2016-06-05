@@ -11,16 +11,17 @@ import java.util.Random;
  *
  * @author Norbert
  */
-public class Plansza {
-  Kratka[][] Pole;
-  Statek[] Okret;
+public class Plansza
+{
+  private Kratka[][] Pole;
+  private Statek[] Okret;
   
-  int liczba4_masztowców;
-  int liczba3_masztowców;
-  int liczba2_masztowców;
-  int liczba1_masztowców;
-  int liczbaStatkow;
-  int rozmiar;
+  private int liczba4_masztowców;
+  private int liczba3_masztowców;
+  private int liczba2_masztowców;
+  private int liczba1_masztowców;
+  private int liczbaStatkow;
+  private int rozmiar;
   
   
   // przeciążony konstruktor dla Plnaszy gdzie gracz dokonuje strzał a te strzały są zaznaczane
@@ -40,15 +41,19 @@ public class Plansza {
   
   public void Dokonaj_strzalu(int x,int y)
   {
-      if(Pole[x][y].getKratka())
+      if(Pole[x][y].getStatek())
       {
           System.out.println("Brawo trafiłeś");
-          Pole[x][y].setKratka(false);
+          // tutaj nie powinnismy resetowac statku
+          Pole[x][y].setStatek(false);
       }
       else
       {
           System.out.println("Pudło");
       }
+      // BEGIN MGawron
+      Pole[x][y].setOdwiedzona(true);
+      // END
   }
   public Plansza(int rozmiar,int liczba4_masztowców,int liczba3_masztowców,int liczba2_masztowców,int liczba1_masztowców )
             {
@@ -111,26 +116,26 @@ public class Plansza {
                              {
                                   
                                             if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() || Pole[x+3][y].getKratka()))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() || Pole[x+2][y].getStatek() || Pole[x+3][y].getStatek()))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
-                                                        Pole[x+2][y].setKratka(true);
-                                                        Pole[x+3][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
+                                                        Pole[x+2][y].setStatek(true);
+                                                        Pole[x+3][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() || Pole[x][y+3].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() || Pole[x][y+2].getStatek() || Pole[x][y+3].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
-                                                        Pole[x][y+2].setKratka(true);
-                                                        Pole[x][y+3].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
+                                                        Pole[x][y+2].setStatek(true);
+                                                        Pole[x][y+3].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -158,24 +163,24 @@ public class Plansza {
                              {
                                   
                                             if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka()))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() || Pole[x+2][y].getStatek()))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
-                                                        Pole[x+2][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
+                                                        Pole[x+2][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() || Pole[x][y+2].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
-                                                        Pole[x][y+2].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
+                                                        Pole[x][y+2].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -202,22 +207,22 @@ public class Plansza {
                              {
                                   
                                             if("Poziomo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[pobierany_statek].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -243,9 +248,9 @@ public class Plansza {
                             while(nieumieszczonyStatek)
                              {
                                   
-                                            if(!Pole[x][y].getKratka())
+                                            if(!Pole[x][y].getStatek())
                                                     {    
-                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                               }
@@ -312,9 +317,9 @@ public class Plansza {
                                     }
                                     // END
                                     
-                                            if(!Pole[x][y].getKratka())
+                                            if(!Pole[x][y].getStatek())
                                                     {    
-                                                        Pole[x][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                         }
@@ -341,22 +346,22 @@ public class Plansza {
                                     // END
                                     
                                     if("Poziomo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -386,24 +391,24 @@ public class Plansza {
                                     // END
                                     
                                     if("Poziomo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() || Pole[x+2][y].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
-                                                        Pole[x+2][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
+                                                        Pole[x+2][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() || Pole[x][y+2].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
-                                                        Pole[x][y+2].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
+                                                        Pole[x][y+2].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -433,26 +438,26 @@ public class Plansza {
                                     // END
                                     
                                     if("Poziomo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x+1][y].getKratka() || Pole[x+2][y].getKratka() || Pole[x+3][y].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x+1][y].getStatek() || Pole[x+2][y].getStatek() || Pole[x+3][y].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x+1][y].setKratka(true);
-                                                        Pole[x+2][y].setKratka(true);
-                                                        Pole[x+3][y].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x+1][y].setStatek(true);
+                                                        Pole[x+2][y].setStatek(true);
+                                                        Pole[x+3][y].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
                                     
                                     
                                     else if("Pionowo".equals(Okret[i].pobierzUlozenie())){
-                                            if(!(Pole[x][y].getKratka() || Pole[x][y+1].getKratka() || Pole[x][y+2].getKratka() ))
+                                            if(!(Pole[x][y].getStatek() || Pole[x][y+1].getStatek() || Pole[x][y+2].getStatek() ))
                                                     {   
                                                         
-                                                        Pole[x][y].setKratka(true);
-                                                        Pole[x][y+1].setKratka(true);
-                                                        Pole[x][y+2].setKratka(true);
-                                                        Pole[x][y+3].setKratka(true);
+                                                        Pole[x][y].setStatek(true);
+                                                        Pole[x][y+1].setStatek(true);
+                                                        Pole[x][y+2].setStatek(true);
+                                                        Pole[x][y+3].setStatek(true);
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
@@ -489,7 +494,7 @@ public class Plansza {
                         continue;
                     if(j > 9)
                         continue;
-                    if(Pole[i][j].getKratka() == false)
+                    if(Pole[i][j].getStatek() == false)
                     {
                         mozna *= 1;
                     }
@@ -514,7 +519,7 @@ public class Plansza {
                         continue;
                     if(j > 9)
                         continue;
-                    if(Pole[i][j].getKratka() == false)
+                    if(Pole[i][j].getStatek() == false)
                     {
                         mozna *= 1;
                     }
@@ -540,7 +545,7 @@ public class Plansza {
           System.out.print(i+1+" ");
           for(int j=0;j<rozmiar;j++)
           {
-             if(Pole[i][j].getKratka()) 
+             if(Pole[i][j].getStatek()) 
                  System.out.print("X");
              else
                  System.out.print(" ");

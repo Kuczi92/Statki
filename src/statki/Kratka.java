@@ -13,26 +13,26 @@ public class Kratka
     private boolean statek;
     private boolean odwiedzona;
     
-    public Kratka(boolean w)
+    public Kratka(boolean value)
     {
-        this.statek = w;
+        this.statek = value;
         this.odwiedzona = false;
     }
     
     
-    public void setKratka(boolean w)
+    public void setStatek(boolean value)
     {
-        this.statek = w;
+        this.statek = value;
     }
     
-    public boolean getKratka()
+    public boolean getStatek()
     {
         return this.statek;
     }
     
-    public void setOdwiedzona(boolean w)
+    public void setOdwiedzona(boolean value)
     {
-        this.odwiedzona = true;
+        this.odwiedzona = value;
     }
     
     public boolean getOdwiedzona()
