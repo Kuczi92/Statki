@@ -56,4 +56,17 @@ public class Statek
     {
         return this.trafiony;
     }
+    
+    public boolean SprawdzCzyZatopiony()
+    {
+        if(this.rozmiar == this.trafiony)
+        {
+            this.SetZatopiony(true);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

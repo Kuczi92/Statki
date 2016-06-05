@@ -461,17 +461,12 @@ public class Plansza
                                                         nieumieszczonyStatek=false;
                                                     }
                                             }
-                                    
-                                    
+                                   
                         }
                        break;
-                      
-                      
-                  
-                  
+           
                   }
                   
-                 
                 }
             }
   
@@ -535,27 +530,30 @@ public class Plansza
     }
     // END
   
-  public void WyswietlPlansze(){
+  public void WyswietlPlansze()
+  {
      System.out.print("  ");
-      for(int i=0;i<rozmiar;i++){
-          System.out.print(i+1);
+      for(int i = 0; i < rozmiar; i++){
+          System.out.print(i + " ");
       }
       System.out.println();
-      for(int i=0;i<rozmiar;i++){
-          System.out.print(i+1+" ");
-          for(int j=0;j<rozmiar;j++)
+      for(int i = 0; i < rozmiar; i++)
+      {
+          System.out.print(i + " ");
+          for(int j = 0; j < rozmiar; j++)
           {
              if(Pole[i][j].getStatek()) 
-                 System.out.print("X");
+                 System.out.print("X ");
              else
-                 System.out.print(" ");
+                 System.out.print("  ");
           }
           System.out.println("|");
       }
-       System.out.print("  ");
-      for(int i = 0 ;i<rozmiar;i++){
-          System.out.print("-");
-          
+      
+      System.out.print("  ");
+      for(int i = 0 ; i < rozmiar; i++)
+      {
+          System.out.print("- ");
       }
      System.out.println();
   }
