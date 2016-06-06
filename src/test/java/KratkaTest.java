@@ -68,6 +68,7 @@ public class KratkaTest extends TestCase {
         assertEquals(expResult, result);
         instance.setOdwiedzona(true);
         expResult = true;
+        result = instance.getOdwiedzona();
         assertEquals(expResult, result);
     }
     

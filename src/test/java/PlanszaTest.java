@@ -66,10 +66,10 @@ public class PlanszaTest extends TestCase {
         System.out.println("SprawdzMasztowiec");
         int x = 0;
         int y = 0;
-        int roz = 0;
-        String uklad = "";
-        Plansza instance = new Plansza(10,1,1,1,1);
-        boolean expResult = false;
+        int roz = 4;
+        String uklad = "Poziomo";
+        Plansza instance = new Plansza(10,1,0,0,0);
+        boolean expResult = true;
         boolean result = instance.SprawdzMasztowiec(x, y, roz, uklad);
         assertEquals(expResult, result);
     }
@@ -109,9 +109,9 @@ public class PlanszaTest extends TestCase {
      */
     public void testDekodujStatki() {
         System.out.println("DekodujStatki");
-        String[] wiersze = null;
+        String[] wiersze = {"0 2 pionowo 2", "1 7 poziomo 3"};
         Plansza instance = new Plansza(10,1,1,1,1);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.DekodujStatki(wiersze);
         assertEquals(expResult, result);
     }
@@ -133,7 +133,7 @@ public class PlanszaTest extends TestCase {
      */
     public void testDekodujPozycje() {
         System.out.println("DekodujPozycje");
-        String pozycja = "";
+        String pozycja = "11";
         Plansza instance = new Plansza(10,1,1,1,1);
         instance.DekodujPozycje(pozycja);
     }
