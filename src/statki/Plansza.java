@@ -66,19 +66,26 @@ public class Plansza
 
     public void Dokonaj_strzalu(int x, int y)
     {
-        if (Pole[x][y].getStatek())
+        if (!Pole[x][y].getOdwiedzona())
         {
-            System.out.println("Brawo trafiłeś");
-            // tutaj nie powinnismy resetowac statku
-            Pole[x][y].setStatek(false);
+            if (Pole[x][y].getStatek())
+            {
+                System.out.println("Brawo trafiłeś");
+                // tutaj nie powinnismy resetowac statku
+                //Pole[x][y].setStatek(false);
+            }
+            else
+            {
+                System.out.println("Pudło");
+            }
+            // BEGIN MGawron
+            Pole[x][y].setOdwiedzona(true);
+            // END
         }
         else
         {
-            System.out.println("Pudło");
+            System.out.println("Juz tu strzelales");
         }
-        // BEGIN MGawron
-        Pole[x][y].setOdwiedzona(true);
-        // END
     }
 
     @SuppressWarnings("UnusedAssignment")
@@ -539,7 +546,7 @@ public class Plansza
     }
     // END
 
-    public void WyswietlPlansze()
+    public void WyswietlPlanszeKomputera()
     {
         System.out.print("  ");
         for (int i = 0; i < rozmiar; i++)
@@ -552,13 +559,67 @@ public class Plansza
             System.out.print(i + " ");
             for (int j = 0; j < rozmiar; j++)
             {
-                if (Pole[i][j].getStatek())
+                if(Pole[i][j].getOdwiedzona())
                 {
-                    System.out.print("X ");
+                    if (Pole[i][j].getStatek())
+                    {
+                        System.out.print("# ");
+                    }
+                    else
+                    {
+                        System.out.print("o ");
+                    }
                 }
                 else
                 {
                     System.out.print("  ");
+                }
+            }
+            System.out.println("|");
+        }
+
+        System.out.print("  ");
+        for (int i = 0; i < rozmiar; i++)
+        {
+            System.out.print("- ");
+        }
+        System.out.println();
+    }
+    
+    public void WyswietlPlanszeGracza()
+    {
+        System.out.print("  ");
+        for (int i = 0; i < rozmiar; i++)
+        {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < rozmiar; i++)
+        {
+            System.out.print(i + " ");
+            for (int j = 0; j < rozmiar; j++)
+            {
+                if(Pole[i][j].getOdwiedzona())
+                {
+                    if (Pole[i][j].getStatek())
+                    {
+                        System.out.print("# ");
+                    }
+                    else
+                    {
+                        System.out.print("o ");
+                    }
+                }
+                else
+                {
+                    if (Pole[i][j].getStatek())
+                    {
+                        System.out.print("X ");
+                    }
+                    else
+                    {
+                        System.out.print("  ");
+                    }
                 }
             }
             System.out.println("|");
@@ -670,6 +731,14 @@ public class Plansza
         {
             return false;
         }
+    }
+    
+    public void DekodujPozycje(String pozycja)
+    {
+        int x = Integer.parseInt(pozycja);
+        int y = x % 10;
+        x = (x - y) / 10;
+        this.Dokonaj_strzalu(x, y);
     }
     // END
 }
