@@ -33,21 +33,21 @@ public class PlanszaTest extends TestCase {
         System.out.println("Dokonaj_strzalu");
         int x = 0;
         int y = 0;
-        Plansza instance = null;
+        Plansza instance =new Plansza(10,1,1,1,1);
+        instance.Generuj_ustawienia_statków_na_planszy_losowo();
+        boolean expResoult = instance.pobierzPozycjeNaPlanszy(x, y);
         instance.Dokonaj_strzalu(x, y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResoult, false);
     }
 
     /**
      * Test of Ustaw_statki method, of class Plansza.
      */
+    /*
     public void testUstaw_statki() {
         System.out.println("Ustaw_statki");
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         instance.Ustaw_statki();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -55,10 +55,8 @@ public class PlanszaTest extends TestCase {
      */
     public void testGeneruj_ustawienia_statków_na_planszy_losowo() {
         System.out.println("Generuj_ustawienia_statk\u00f3w_na_planszy_losowo");
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         instance.Generuj_ustawienia_statków_na_planszy_losowo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -70,12 +68,10 @@ public class PlanszaTest extends TestCase {
         int y = 0;
         int roz = 0;
         String uklad = "";
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         boolean expResult = false;
         boolean result = instance.SprawdzMasztowiec(x, y, roz, uklad);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -83,10 +79,8 @@ public class PlanszaTest extends TestCase {
      */
     public void testWyswietlPlanszeKomputera() {
         System.out.println("WyswietlPlanszeKomputera");
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         instance.WyswietlPlanszeKomputera();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -94,10 +88,8 @@ public class PlanszaTest extends TestCase {
      */
     public void testWyswietlPlanszeGracza() {
         System.out.println("WyswietlPlanszeGracza");
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         instance.WyswietlPlanszeGracza();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -106,12 +98,10 @@ public class PlanszaTest extends TestCase {
     public void testWczytajPlanszeZPliku() {
         System.out.println("WczytajPlanszeZPliku");
         String nazwa = "";
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         boolean expResult = false;
         boolean result = instance.WczytajPlanszeZPliku(nazwa);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -120,12 +110,10 @@ public class PlanszaTest extends TestCase {
     public void testDekodujStatki() {
         System.out.println("DekodujStatki");
         String[] wiersze = null;
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         boolean expResult = false;
         boolean result = instance.DekodujStatki(wiersze);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -134,12 +122,10 @@ public class PlanszaTest extends TestCase {
     public void testDekodujLiczbeStatkow() {
         System.out.println("DekodujLiczbeStatkow");
         String wiersz = "";
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         boolean expResult = false;
         boolean result = instance.DekodujLiczbeStatkow(wiersz);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -148,10 +134,8 @@ public class PlanszaTest extends TestCase {
     public void testDekodujPozycje() {
         System.out.println("DekodujPozycje");
         String pozycja = "";
-        Plansza instance = null;
+        Plansza instance = new Plansza(10,1,1,1,1);
         instance.DekodujPozycje(pozycja);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

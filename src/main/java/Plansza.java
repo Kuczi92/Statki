@@ -22,6 +22,8 @@ public class Plansza
     private Kratka[][] Pole;
     private Statek[] Okret;
 
+    
+    
     private int liczba4_masztowców;
     private int liczba3_masztowców;
     private int liczba2_masztowców;
@@ -91,19 +93,19 @@ public class Plansza
     @SuppressWarnings("UnusedAssignment")
     public void Ustaw_statki()
     {
+       
         Scanner scan = new Scanner(System.in);
-        for (int i = 0; i < liczbaStatkow; i++)
-        {
+        
 
             System.out.println("Podaj liczbę jednomasztowców");
-            this.liczba1_masztowców = scan.nextInt();
+            this.liczba1_masztowców = Integer.parseInt(scan.nextLine());
             System.out.println("Podaj liczbę dwumasztowców");
-            this.liczba2_masztowców = scan.nextInt();
+            this.liczba2_masztowców = Integer.parseInt(scan.nextLine());
             System.out.println("Podaj liczbę trójmasztowców");
-            this.liczba3_masztowców = scan.nextInt();
+            this.liczba3_masztowców = Integer.parseInt(scan.nextLine());
             System.out.println("Podaj liczbę Czteromasztowców");
-            this.liczba4_masztowców = scan.nextInt();
-        }
+            this.liczba4_masztowców = Integer.parseInt(scan.nextLine());
+        
         int pobierany_statek = 0;
         int x, y;
 
@@ -741,4 +743,8 @@ public class Plansza
         this.Dokonaj_strzalu(x, y);
     }
     // END
+    public boolean pobierzPozycjeNaPlanszy(int x,int y){
+       boolean w = Pole[x][y].getStatek();
+        return w; 
+    }
 }
